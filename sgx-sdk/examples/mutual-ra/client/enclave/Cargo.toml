@@ -1,0 +1,22 @@
+[package]
+name = "remoteattestationenclave"
+version = "0.0.1"
+authors = ["glassonion1 <glassonion999@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "remoteattestationenclave"
+crate-type = ["staticlib"]
+
+[dependencies]
+attestation = {path = "../../attestation/"}
+sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git", rev = "v1.1.3" }
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk.git", rev = "v1.1.3", features = ["net"] }
+sgx_trts = { git = "https://github.com/apache/teaclave-sgx-sdk.git", rev = "v1.1.3" }
+sgx_tcrypto = { git = "https://github.com/apache/teaclave-sgx-sdk.git", rev = "v1.1.3" }
+webpki = { git = "https://github.com/mesalock-linux/webpki", branch = "mesalock_sgx" }
+hex = { git = "https://github.com/mesalock-linux/rust-hex-sgx", rev = "sgx_1.1.3", default-features = false }
+rustls = { git = "https://github.com/mesalock-linux/rustls", branch = "mesalock_sgx" }
+
+[features]
+default = []

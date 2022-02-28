@@ -1,0 +1,15 @@
+enclave
+{
+    from "sgx_tstd.edl" import *;
+    from "sgx_stdio.edl" import *;
+    from "sgx_backtrace.edl" import *;
+    from "sgx_tstdc.edl" import *;
+    trusted
+    {
+        /*These are ECALL defines.*/
+        public sgx_status_t ecall_vote([in, size=ballot_len] const uint8_t* ballot, size_t ballot_len);
+    };
+    untrusted
+    {
+    };
+};

@@ -1,0 +1,47 @@
+enclave
+{
+    from "sgx_tstd.edl" import *;
+    from "sgx_stdio.edl" import *;
+    from "sgx_backtrace.edl" import *;
+    from "sgx_tstdc.edl" import *;
+    from "sgx_fs.edl" import *;
+
+    trusted
+    {
+        /*These are ECALL defines.*/
+        public sgx_status_t user_register(
+            [in, size=username_len] const uint8_t* username,
+            size_t username_len
+        );
+        public sgx_status_t deposit_ecall(
+            [in, size=username_len] const uint8_t* username,
+            size_t username_len,
+            uint64_t add_money
+        );
+        public sgx_status_t pullout_ecall(
+            [in, size=username_len] const uint8_t* username,
+            size_t username_len,
+            uint64_t sub_money
+        );
+        public sgx_status_t deposit_print_ecall(
+            [in, size=username_len] const uint8_t* username,
+            size_t username_len
+        );
+    };
+
+    untrusted
+    {
+        sgx_status_t file_write(
+            [in, size=file_len] const uint8_t* file_name, 
+            size_t file_len, 
+            [in, size=content_len] const uint8_t* content, 
+            size_t content_len
+        );
+        uint8_t* file_read(
+            [in, size=file_len] const uint8_t* file_name,
+            size_t file_len,
+            [out] size_t* data_len
+        );
+        sgx_status_t test_ocall(uint8_t slen);
+    };
+};

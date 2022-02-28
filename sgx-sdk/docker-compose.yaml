@@ -1,0 +1,13 @@
+version: "3"
+services:
+  sgx:
+    build: .
+    environment:
+      LD_LIBRARY_PATH: "/opt/intel/sgx-aesm-service/aesm"
+    volumes:
+      - ./examples:/root/sgx/examples
+    #devices:
+    #  - "/dev/sgx/enclave"
+    stdin_open: true
+    tty: true
+    command: bash -c "/opt/intel/sgx-aesm-service/aesm/aesm_service && /bin/bash"

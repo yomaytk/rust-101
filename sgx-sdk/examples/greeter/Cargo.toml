@@ -1,0 +1,13 @@
+[package]
+name = "greeter"
+version = "0.1.0"
+authors = ["masashi <yoshimura.masashi.yj6@is.naist.jp>"]
+edition = "2018"
+
+[dependencies]
+sgx_urts = "1.1.1"
+sgx_trts = "1.1.1"
+
+[[bin]]
+name = "greeter"
+path = "src/main.rs"

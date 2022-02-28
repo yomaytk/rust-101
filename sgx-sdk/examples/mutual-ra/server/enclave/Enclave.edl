@@ -1,0 +1,22 @@
+enclave
+{
+    from "sgx_tstd.edl" import *;
+    from "sgx_stdio.edl" import *;
+    from "sgx_fs.edl" import *;
+    from "sgx_net.edl" import *;
+    from "sgx_tstdc.edl" import *;
+    from "sgx_env.edl" import *;
+
+    from "../attestation/attestation.edl" import *;
+
+    trusted
+    {
+        public sgx_status_t run_server_session(
+            int fd,
+            sgx_quote_sign_type_t quote_type
+        );
+    };
+    untrusted
+    {
+    };
+};

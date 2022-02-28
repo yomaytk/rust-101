@@ -1,0 +1,10 @@
+[package]
+name = "crypto_box_sample"
+version = "0.0.1"
+authors = ["glassonion1 <glassonion999@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+# https://github.com/RustCrypto/nacl-compat
+crypto_box = "0.6.1"
+rand_chacha = { version = "0.3", default-features = false }
